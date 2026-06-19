@@ -29,4 +29,4 @@ jobs:
 
     - name: Run Flask Test Suite
       run: |
-        pytest t1.py
+        pytest test_t1.py
