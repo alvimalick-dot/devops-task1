@@ -2,13 +2,16 @@ name: Flask Application CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
 
     steps:
     - name: Check out repository code
@@ -17,10 +20,7 @@ jobs:
     - name: Set up Python Environment
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
-
-    - name: Display Python Version Log
-      run: python --version
+        python-version: ${{ matrix.python-version }}
 
     - name: Install Dependencies
       run: |
