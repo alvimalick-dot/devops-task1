@@ -12,11 +12,3 @@ def test_health():
     response = client.get('/health')
     assert response.status_code == 200
 # This syntax works perfectly in 3.10+, but completely breaks in 3.9!
-def check_python_version_compatibility(status_code):
-    match status_code:
-        case 200:
-            return "Success"
-        case 500:
-            return "Server Error"
-        case _:
-            return "Unknown"
